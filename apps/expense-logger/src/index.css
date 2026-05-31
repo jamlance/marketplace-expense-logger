@@ -1,0 +1,58 @@
+@import "@inkress/apps-core/styles.css";
+
+/* Expense Logger — P&L view + category bars + expense management. */
+
+.ex-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.ex-top h2 { font-size: 1.0625rem; }
+.ex-top-actions { display: inline-flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+.ex-ranges, .ex-filters { display: inline-flex; gap: 3px; background: var(--panel); padding: 3px; border-radius: 9px; border: 1px solid var(--line); }
+.ex-range, .ex-filter { height: 30px; padding: 0 12px; font-size: 0.8125rem; font-weight: 600; border: 0; background: transparent; color: var(--ink-soft); border-radius: 7px; }
+.ex-range:hover, .ex-filter:hover { color: var(--ink); background: transparent; }
+.ex-range.is-on, .ex-filter.is-on { background: var(--surface); color: var(--accent); box-shadow: var(--e1); }
+.ex-filters { flex-wrap: wrap; }
+
+.ex-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; align-items: start; }
+@media (max-width: 720px) { .ex-cols { grid-template-columns: 1fr; } }
+
+.ex-cats { display: flex; flex-direction: column; gap: 12px; }
+.ex-cat-head { display: flex; align-items: baseline; justify-content: space-between; font-size: 0.8125rem; margin-bottom: 5px; }
+.ex-cat-head b { font-variant-numeric: tabular-nums; }
+.ex-cat-track { height: 8px; border-radius: 99px; background: var(--panel); overflow: hidden; }
+.ex-cat-fill { height: 100%; background: var(--accent); border-radius: 99px; transition: width 0.3s var(--ease); }
+
+.ex-note { display: flex; align-items: center; gap: 7px; margin-top: 14px; }
+
+.ex-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.ex-field { display: flex; flex-direction: column; gap: 5px; }
+
+/* Category manager (modal) */
+.ex-cat-manage { display: flex; flex-direction: column; gap: 14px; min-width: 320px; }
+.ex-cat-list { display: flex; flex-direction: column; gap: 8px; }
+.ex-cat-section { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); font-weight: 600; margin-top: 4px; }
+.ex-cat-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.ex-cat-chip { display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem; font-weight: 600; padding: 4px 6px 4px 11px; border-radius: 999px; background: var(--accent-wash); color: var(--accent); border: 1px solid color-mix(in oklch, var(--accent) 25%, transparent); }
+.ex-cat-x { width: 18px; height: 18px; padding: 0; border: 0; background: transparent; color: var(--accent); border-radius: 999px; display: inline-grid; place-items: center; cursor: pointer; }
+.ex-cat-x:hover { background: color-mix(in oklch, var(--accent) 18%, transparent); }
+.ex-cat-add { display: flex; gap: 8px; }
+.ex-cat-add input { flex: 1; }
+
+/* budgets */
+.ex-budgets { display: flex; flex-direction: column; gap: 12px; }
+.ex-budget-head { display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 5px; }
+.ex-budget.is-over .ex-cat-fill { background: var(--bad); }
+.ex-budget.is-over .ex-budget-head b { color: var(--bad); }
+
+/* spend-over-time bars */
+.ex-months { display: flex; align-items: flex-end; gap: 6px; height: 120px; padding-top: 8px; }
+.ex-month { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 6px; }
+.ex-month-fill { width: 70%; background: var(--accent); border-radius: 5px 5px 0 0; min-height: 4px; }
+.ex-month-label { font-size: 0.68rem; color: var(--ink-faint); }
+
+/* receipt attach */
+.ex-receiptrow { display: flex; align-items: center; gap: 12px; margin-top: 4px; }
+.ex-receipt { flex: none; width: 54px; height: 70px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel) center / cover no-repeat; }
+.ex-receipt.is-empty { display: grid; place-items: center; }
+.ex-receipt.is-empty::after { content: ""; width: 16px; height: 16px; border-radius: 4px; background: var(--line-strong); }
+.ex-check { display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; color: var(--ink-soft); margin-top: 8px; }
+.ex-check input { width: auto; height: auto; }
